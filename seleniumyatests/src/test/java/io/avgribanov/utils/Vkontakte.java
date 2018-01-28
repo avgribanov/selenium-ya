@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 
@@ -21,6 +23,8 @@ public class Vkontakte {
     private WebDriver driver;
 
     LocalTime timenow = LocalTime.now();
+    LocalDate datenow = LocalDate.now();
+
 
     @Before
     public void createDriver() {
@@ -69,13 +73,13 @@ public class Vkontakte {
         checkTitle(driver, "Диалоги");
         /* Ввод даты */
         inputMessageDialog.clear();
-        inputMessageDialog.sendKeys(timenow.toString());
+        inputMessageDialog.sendKeys(datenow.toString() + " " + timenow.toString());
         /* Поиск кнопки */
         WebElement sendButton = driver.findElement(By.xpath("//button[@class='im-send-btn im-chat-input--send _im_send im-send-btn_send']"));
         sendButton.click();
         /* Проверка на отправку */
-        checkWebElement(driver, "//li[last()]//div[@class='im-mess--text wall_module _im_log_body' and text()='" + timenow + "']");
-        assertThat(driver.findElement(By.xpath("//li[last()]//div[@class='im-mess--text wall_module _im_log_body' and text()='" + timenow + "']")).isDisplayed()).isTrue();
+        checkWebElement(driver, "//li[last()]//div[@class='im-mess--text wall_module _im_log_body' and text()='" + datenow + " " + timenow + "']");
+        assertThat(driver.findElement(By.xpath("//li[last()]//div[@class='im-mess--text wall_module _im_log_body' and text()='" + datenow + " " + timenow + "']")).isDisplayed()).isTrue();
 
         /* Ввод и отправка сообщения */
         //WebElement inputMessage = driver.findElement(By.xpath("//*[@id='mail_box_editable']"));
