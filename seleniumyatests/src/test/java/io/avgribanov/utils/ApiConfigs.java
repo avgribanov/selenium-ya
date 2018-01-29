@@ -7,5 +7,11 @@ public interface ApiConfigs extends Config {
     String xauthorization();
 
     String xsessionid();
+
+    String category();
+
+    String offerId();
+
+
 }
 
