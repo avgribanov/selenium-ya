@@ -44,7 +44,11 @@ public class RetrofitApi {
     public interface Api {
 
         @GET("/1.0/user/offers/{category}/{offerId}")
-        Call<Map<String, Object>> getUser(@Path("category") String category, @Path("offerId") String offerId, @Header("x-authorization") String authorization, @Header("x-session-id") String sessionid);
+        Call<Map<String, Object>> getUser(
+                @Path("category") String category,
+                @Path("offerId") String offerId,
+                @Header("x-authorization") String authorization,
+                @Header("x-session-id") String sessionid);
 
     }
 }
