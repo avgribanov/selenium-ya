@@ -27,7 +27,7 @@ public class RetrofitApi {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
-        Api service = retrofit.create(Api.class);
+        ApiGet service = retrofit.create(ApiGet.class);
 
         Call<Map<String, Object>> user = service.getUser(
                 cfg.category(),
@@ -41,7 +41,7 @@ public class RetrofitApi {
         Assert.assertEquals("SUCCESS", status);
     }
 
-    public interface Api {
+    public interface ApiGet {
 
         @GET("/1.0/user/offers/{category}/{offerId}")
         Call<Map<String, Object>> getUser(
