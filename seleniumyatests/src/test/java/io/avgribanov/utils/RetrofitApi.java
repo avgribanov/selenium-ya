@@ -31,6 +31,7 @@ public class RetrofitApi {
 
         Call<Map<String, Object>> user = service.getUser(
                 cfg.category(),
+                cfg.offerId(),
                 cfg.xauthorization(),
                 cfg.xsessionid());
 
@@ -42,8 +43,8 @@ public class RetrofitApi {
 
     public interface Api {
 
-        @GET("/1.0/user/offers/{category}/1068576562-348fbf")
-        Call<Map<String, Object>> getUser(@Path("category") String category, @Header("x-authorization") String authorization, @Header("x-session-id") String sessionid);
+        @GET("/1.0/user/offers/{category}/{offerId}")
+        Call<Map<String, Object>> getUser(@Path("category") String category, @Path("offerId") String offerId, @Header("x-authorization") String authorization, @Header("x-session-id") String sessionid);
 
     }
 }
