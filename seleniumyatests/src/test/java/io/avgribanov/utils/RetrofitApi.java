@@ -1,7 +1,6 @@
 package io.avgribanov.utils;
 
 import org.aeonbits.owner.ConfigFactory;
-import org.junit.Assert;
 import org.junit.Test;
 import retrofit2.Call;
 import retrofit2.Response;
@@ -13,6 +12,8 @@ import retrofit2.http.Header;
 import retrofit2.http.Path;
 
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class RetrofitApi {
@@ -38,8 +39,8 @@ public class RetrofitApi {
         Response<Map<String, Object>> execute = user.execute();
         Map<String, Object> body = execute.body();
         String status = (String) body.get("status");
-        Assert.assertEquals("SUCCESS", status);
-    }
+        assertThat(status).isEqualTo("SUCCESS");
+        }
 
     public interface ApiGet {
 
