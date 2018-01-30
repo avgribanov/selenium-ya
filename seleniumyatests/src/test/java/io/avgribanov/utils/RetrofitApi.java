@@ -14,6 +14,8 @@ import retrofit2.http.Path;
 
 import java.util.Map;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class RetrofitApi {
 
@@ -38,8 +40,8 @@ public class RetrofitApi {
         Response<Map<String, Object>> execute = user.execute();
         Map<String, Object> body = execute.body();
         String status = (String) body.get("status");
-        Assert.assertEquals("SUCCESS", status);
-    }
+        assertThat(status).isEqualTo("SUCCESS");
+        }
 
     public interface ApiGet {
 
