@@ -1,7 +1,6 @@
 package io.avgribanov.utils;
 
 import org.aeonbits.owner.ConfigFactory;
-import org.junit.Assert;
 import org.junit.Test;
 import retrofit2.Call;
 import retrofit2.Response;
