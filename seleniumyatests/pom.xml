@@ -64,6 +64,11 @@
             <artifactId>retrofit</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.htmlelements</groupId>
+            <artifactId>htmlelements</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
