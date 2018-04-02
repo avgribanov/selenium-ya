@@ -15,5 +15,8 @@ public interface AuthPage extends WebPage {
     @FindBy("//button[@id='index_login_button']")
     HtmlElement buttonLogin();
 
+    @FindBy("//div[@id='index_login']")
+    HtmlElement blockAuth();
+
 }
 

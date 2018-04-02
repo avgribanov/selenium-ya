@@ -9,4 +9,11 @@ public interface PopupDialog extends WebPage {
     @FindBy("//*[@class='mail_box_header_link']")
     HtmlElement nextDialog();
 
+    @FindBy("//*[@class='box_layout']")
+    HtmlElement blockPopup();
+
+    @FindBy("//*[@class='mail_box_header_link']")
+    HtmlElement urlDialog();
 }
+
+
