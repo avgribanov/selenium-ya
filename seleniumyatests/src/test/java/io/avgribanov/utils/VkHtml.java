@@ -21,13 +21,24 @@ import static io.qameta.htmlelements.matcher.DisplayedMatcher.displayed;
 public class VkHtml {
 
     private WebDriver driver;
-
+    private VkConfigs cfg = ConfigFactory.create(VkConfigs.class);
+    WebPageFactory factory = new WebPageFactory();
+    AuthPage authPage;
+    NewsPage newsPage;
+    UserPage userPage;
+    PopupDialog popupDialog;
+    DialogsPage dialogPage;
     LocalTime timenow = LocalTime.now();
     LocalDate datenow = LocalDate.now();
 
     @Before
     public void createDriver() {
         driver = new ChromeDriver();
+        authPage = factory.get(driver, AuthPage.class);
+        newsPage = factory.get(driver, NewsPage.class);
+        userPage = factory.get(driver, UserPage.class);
+        popupDialog = factory.get(driver, PopupDialog.class);
+        dialogPage = factory.get(driver, DialogsPage.class);
     }
 
     @After
@@ -37,14 +48,6 @@ public class VkHtml {
 
     @Test
     public void testWebYa() {
-
-        VkConfigs cfg = ConfigFactory.create(VkConfigs.class);
-        WebPageFactory factory = new WebPageFactory();
-        AuthPage authPage = factory.get(driver, AuthPage.class);
-        NewsPage newsPage = factory.get(driver, NewsPage.class);
-        UserPage userPage = factory.get(driver, UserPage.class);
-        PopupDialog popupDialog = factory.get(driver, PopupDialog.class);
-        DialogsPage dialogPage = factory.get(driver, DialogsPage.class);
 
         /* Переход на сайт */
         driver.get("https://vk.com/");
@@ -90,7 +93,6 @@ public class VkHtml {
 
         /* Проверка на отправку */
         dialogPage.messageNext(datenow.toString(), timenow.toString()).should(displayed());
-
     }
 
 }
